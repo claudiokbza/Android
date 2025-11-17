@@ -19,8 +19,7 @@ import androidx.compose.ui.graphics.vector.path
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp                    // Add this import
 import androidx.navigation.NavController
-
-// ... other imports
+import com.example.clase1.nav.Route
 
 @Composable
 fun RegisterScreen(nav: NavController) {
@@ -28,53 +27,15 @@ fun RegisterScreen(nav: NavController) {
     var email by remember { mutableStateOf("") }
     var pwd by remember { mutableStateOf("") }
 
-    // Start Column on a new line with its content in curly braces {}
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(20.dp),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally // Good practice to center
-    ) {
-        Text(
-            "Crear cuenta",
-            fontSize = 22.sp
-        )
-
-        Spacer(modifier = Modifier.height(16.dp))
-
-        // Each composable on its own line
-        OutlinedTextField(
-            value = name,
-            onValueChange = { name = it },
-            label = { Text("Nombre") },
-            modifier = Modifier.fillMaxWidth()
-        )
-
-        Spacer(modifier = Modifier.height(8.dp))
-
-        OutlinedTextField(
-            value = email,
-            onValueChange = { email = it },
-            label = { Text("Correo") },
-            modifier = Modifier.fillMaxWidth()
-        )
-
-        Spacer(modifier = Modifier.height(8.dp))
-
-        OutlinedTextField(
-            value = pwd,
-            onValueChange = { pwd = it },
-            label = { Text("Contraseña") },
-            modifier = Modifier.fillMaxWidth()
-        )
-
-        Spacer(modifier = Modifier.height(16.dp))
-
-        Button(
-            onClick = { nav.run { navigate(com.google.android.libraries.mapsplatform.transportation.consumer.model.Route.Login.path) } },
-            modifier = Modifier.fillMaxWidth()
-        ) {
+    Column(Modifier.fillMaxSize().padding(20.dp), verticalArrangement = Arrangement.Center) {
+        Text("Crear cuenta", fontSize = 22.sp)
+        OutlinedTextField(name, { name = it }, label = { Text("Nombre") })
+        Spacer(Modifier.height(8.dp))
+        OutlinedTextField(email, { email = it }, label = { Text("Correo") })
+        Spacer(Modifier.height(8.dp))
+        OutlinedTextField(pwd, { pwd = it }, label = { Text("Contraseña") })
+        Spacer(Modifier.height(16.dp))
+        Button(onClick = { nav.navigate(Route.Login.path) }, modifier = Modifier.fillMaxWidth()) {
             Text("Crear cuenta")
         }
     }
