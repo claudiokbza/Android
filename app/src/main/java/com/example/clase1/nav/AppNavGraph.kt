@@ -15,6 +15,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.clase1.R
 import com.example.clase1.nav.Route
 import com.example.clase1.screen.LoginScreen
+import com.example.clase1.screen.RegisterScreen
 
 
 @Composable

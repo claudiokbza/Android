@@ -1,6 +1,7 @@
 package com.example.clase1.screen
 
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -25,7 +26,9 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.clase1.nav.Route
 import com.example.clase1.ui.theme.Clase1Theme
-
+import androidx.compose.ui.res.painterResource
+import androidx.compose.foundation.layout.size
+import com.example.clase1.R
 
 @Composable
 fun LoginContent( user: String, pass: String,
@@ -35,17 +38,40 @@ fun LoginContent( user: String, pass: String,
         modifier = Modifier
             .fillMaxSize()
             .padding(20.dp),
-        verticalArrangement = Arrangement.Center
+        verticalArrangement = Arrangement.Center,
+        // Agregamos esto para que todo se centre horizontalmente por defecto
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text("Bienvenido", fontSize = 23.sp, modifier = Modifier.align(Alignment.CenterHorizontally))
+
+        // --- 1. AQUÍ AGREGAMOS LA IMAGEN ---
+        Image(
+            // Reemplaza 'R.drawable.tu_logo' por el nombre real de tu archivo (ej. R.drawable.tulio_trivino)
+            // Si no tienes imagen aún, prueba con: R.mipmap.ic_launcher
+            painter = painterResource(id = R.drawable.bodoque),
+            contentDescription = "Logo de la aplicación",
+            modifier = Modifier
+                .size(100.dp) // Tamaño de la imagen (ajusta según necesites)
+                .padding(bottom = 16.dp) // Espacio debajo de la imagen
+        )
+        // ----------------------------------
+
+        Text("Bienvenido", fontSize = 23.sp) // Quitamos el modifier.align porque ya lo pusimos en la Columna
+
         Spacer(Modifier.height(12.dp))
-        OutlinedTextField(user, onUserChange, label = { Text("Usuario") }, modifier = Modifier.fillMaxWidth(),)
+
+        OutlinedTextField(user, onUserChange, label = { Text("Usuario") }, modifier = Modifier.fillMaxWidth())
+
         Spacer(Modifier.height(8.dp))
-        OutlinedTextField(pass, onPassChange, label = { Text("Contraseña") } )
+
+        // Tip: Agregué fillMaxWidth aquí también para que se vea igual al de arriba
+        OutlinedTextField(pass, onPassChange, label = { Text("Contraseña") }, modifier = Modifier.fillMaxWidth())
+
         Spacer(Modifier.height(16.dp))
+
         Button(onClick = onLoginClick, modifier = Modifier.fillMaxWidth()) {
             Text("Ingresar")
         }
+
         TextButton(onClick = onRegisterClick, modifier = Modifier.align(Alignment.End)) {
             Text("¿No tienes cuenta? Regístrate")
         }

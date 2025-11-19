@@ -1,13 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="Theme.App.Splash" parent="Theme.SplashScreen">
-        <!-- Ícono grande del splash -->
-        <item name="windowSplashScreenAnimatedIcon">@drawable/tulio_trivino</item>
-        <!-- Color de fondo del splash -->
+        <item name="windowSplashScreenAnimatedIcon">@mipmap/tulio_redondo_round</item>
         <item name="windowSplashScreenBackground">@color/purple_700</item>
+        <item name="postSplashScreenTheme">@style/Theme.Clase1</item>
     </style>
 
+    <style name="Theme.Clase1" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
 
-    <style name="Theme.Clase1" parent="Theme.AppCompat.Light.NoActionBar" />
+        <item name="colorPrimary">@color/purple_700</item>
+    </style>
 </resources>
 
